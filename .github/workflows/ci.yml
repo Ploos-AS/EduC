@@ -3,9 +3,19 @@ on:
   push:
   pull_request:
 jobs:
-  build:
+  host:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Build and run examples
+      - name: Build and run examples on host
         run: make check
+  student-oci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build student image
+        run: docker build -t educ-student:test .
+      - name: Inspect student environment
+        run: docker run --rm educ-student:test student-env-info
+      - name: Run course checks as a student
+        run: docker run --rm -v "$PWD:/course" educ-student:test student-check
