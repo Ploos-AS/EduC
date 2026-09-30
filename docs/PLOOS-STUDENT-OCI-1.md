@@ -1,6 +1,6 @@
 # PLOOS-STUDENT-OCI-1
 
-Status: reference implementation
+This repository implements the canonical `Ploos-AS/publishing/standards/PLOOS-STUDENT-OCI-1.md` contract.
 
 ## Purpose
 
